@@ -20,15 +20,13 @@ const client = new MongoClient(uri, {
 const run = async () => {
   try {
     const db = client.db('danriyal-solutions');
-    const booksCollection = db.collection('blogs');
+    const blogsCollection = db.collection('blogs');
 
-    // app.get('/books', async (req, res) => {
-    //   const cursor = booksCollection.find({});
-    //   const books = await cursor.toArray();
-    //   console.log(books)
-    //   res.send({ status: true, data: books });
-      
-    // });
+    app.get('/blogs', async (req, res) => {
+      const cursor = blogsCollection.find({});
+      const blogs = await cursor.toArray();
+      res.send({ status: true, data: blogs });
+    });
 
   } finally {
     // await client.close();
